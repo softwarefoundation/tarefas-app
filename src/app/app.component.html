@@ -7,11 +7,11 @@
 <div class="container">
   <h3>Tarefas</h3>
   <hr/>
-  <form>
+  <form [formGroup]="tarefaForm" (ngSubmit)="cadastrarTarefa()" >
     <div class="mb-3">
       <label for="descricao" class="form-label">Descrição da tarefa</label>
-      <input type="email" class="form-control" id="descricao" aria-describedby="descricaoHelp">
-      <div id="descricaoHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <input id="descricao" formControlName="descricao" type="text" class="form-control"  aria-describedby="descricaoHelp">
+      <div id="descricaoHelp" class="form-text">Informe uma descrição</div>
     </div>
     <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
   </form>
