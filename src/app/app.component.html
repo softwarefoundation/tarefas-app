@@ -20,10 +20,16 @@
 
   <ul class="list-group">
     <li *ngFor="let tarefa of tarefas" class="list-group-item d-flex justify-content-between align-items-center">
-      {{tarefa.descricao}}
+      <div *ngIf="tarefa.concluido" >
+        {{tarefa.descricao}} - {{tarefa.dataConclusao}}
+      </div>
+      <div *ngIf="!tarefa.concluido" >
+        {{tarefa.descricao}}
+      </div>
+
       <span class="badge rounded-pill">
         <div class="btn-group">
-          <button class="btn btn-outline-success">Concluir</button>
+          <button class="btn btn-outline-success" [hidden]="tarefa.concluido" (click)="concluirTarefa(tarefa)" >Concluir</button>
           <button class="btn btn-outline-danger" (click)="deletarTarefa(tarefa)" >Excluir</button>
         </div>
       </span>

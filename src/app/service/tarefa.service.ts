@@ -27,4 +27,10 @@ export class TarefaService {
     return this.http.delete<void>(url);
   }
 
+  public concluirTarefa(tarefa: Tarefa): Observable<Tarefa> {
+    const url = `${this.apiUrl + '/' + tarefa.id}`;
+    console.log('Concluir tarefa: ' + url);
+    return this.http.patch<Tarefa>(url, {});
+  }
+
 }

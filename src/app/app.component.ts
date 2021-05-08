@@ -44,4 +44,14 @@ export class AppComponent implements OnInit{
     });
   }
 
+  public concluirTarefa(tarefa: Tarefa): void {
+    this.tarefaService.concluirTarefa(tarefa).subscribe(tarefaConcluida => {
+      if ( tarefaConcluida.id ){
+        console.log(`Concluir tarefa: ${tarefaConcluida}`);
+        tarefa.concluido = tarefaConcluida.concluido;
+        tarefa.dataConclusao = tarefaConcluida.dataConclusao;
+      }
+    });
+  }
+
 }
