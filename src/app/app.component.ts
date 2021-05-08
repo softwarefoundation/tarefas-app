@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.tarefaService.listarTarefas().subscribe( tarefasRetorno => this.tarefas = tarefasRetorno);
+    this.listarTarefas();
   }
 
   public cadastrarTarefa(): void {
@@ -33,8 +33,14 @@ export class AppComponent implements OnInit{
   public listarTarefas(): void {
     this.tarefaService.listarTarefas().subscribe( tarefasRetorno => {
       console.log(tarefasRetorno);
-      this.tarefas.concat(tarefasRetorno);
+      this.tarefas = tarefasRetorno;
       this.tarefaForm.reset();
+    });
+  }
+
+  public deletarTarefa(tarefa: Tarefa): void {
+    this.tarefaService.deletarTarefa(tarefa).subscribe(next => {
+      this.listarTarefas();
     });
   }
 

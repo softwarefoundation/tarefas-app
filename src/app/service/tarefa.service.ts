@@ -21,4 +21,10 @@ export class TarefaService {
     return this.http.get<Tarefa[]>(this.apiUrl.concat('/todos'));
   }
 
+  public deletarTarefa(tarefa: Tarefa): Observable<void> {
+    const url = `${this.apiUrl + '/' + tarefa.id}`;
+    console.log('Deletar tarefa: ' + url);
+    return this.http.delete<void>(url);
+  }
+
 }
