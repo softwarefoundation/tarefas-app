@@ -1,5 +1,5 @@
 export class Tarefa {
   id = 0;
-  descricacao = '';
+  descricao = '';
   concluido = '';
 }

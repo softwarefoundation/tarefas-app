@@ -7,12 +7,27 @@
 <div class="container">
   <h3>Tarefas</h3>
   <hr/>
-  <form [formGroup]="tarefaForm" (ngSubmit)="cadastrarTarefa()" >
+  <form (ngSubmit)="cadastrarTarefa()" [formGroup]="tarefaForm" >
     <div class="mb-3">
-      <label for="descricao" class="form-label">Descrição da tarefa</label>
-      <input id="descricao" formControlName="descricao" type="text" class="form-control"  aria-describedby="descricaoHelp">
-      <div id="descricaoHelp" class="form-text">Informe uma descrição</div>
+      <label class="form-label" for="descricao">Descrição da tarefa</label>
+      <input aria-describedby="descricaoHelp" class="form-control" formControlName="descricao" id="descricao"  type="text">
+      <div class="form-text" id="descricaoHelp">Informe uma descrição</div>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
+    <button class="btn btn-primary" type="submit">Salvar Tarefa</button>
   </form>
+
+  <hr/>
+
+  <ul class="list-group">
+    <li *ngFor="let tarefa of tarefas" class="list-group-item d-flex justify-content-between align-items-center">
+      {{tarefa.descricao}}
+      <span class="badge rounded-pill">
+        <div class="btn-group">
+          <button class="btn btn-outline-success">Concluir</button>
+          <button class="btn btn-outline-danger">Excluir</button>
+        </div>
+      </span>
+    </li>
+  </ul>
+
 </div>

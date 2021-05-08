@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "tarefas-app"
+  "defaultProject": "tarefas-app",
+  "cli": {
+    "analytics": "20dbbf14-06e2-4d05-9e3d-f6c4e72c1f1d"
+  }
 }

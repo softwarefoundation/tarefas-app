@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { TarefaService} from './service/tarefa.service';
+import {Tarefa} from './model/tarefa';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { TarefaService} from './service/tarefa.service';
 })
 export class AppComponent {
   title = 'tarefas-app';
+  tarefas: Tarefa[] = [];
 
   constructor(private tarefaService: TarefaService){}
 
@@ -17,9 +19,9 @@ export class AppComponent {
   });
 
   public cadastrarTarefa(): void {
-    console.log(this.tarefaForm.value);
     this.tarefaService.cadastrarTarefa(this.tarefaForm.value).subscribe( tarefaRetorno => {
-      console.log(tarefaRetorno);
+      this.tarefas.push(tarefaRetorno);
+      this.tarefaForm.reset();
     });
   }
 
