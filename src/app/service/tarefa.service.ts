@@ -17,4 +17,8 @@ export class TarefaService {
     return this.http.post<Tarefa>(this.apiUrl, tarefa);
   }
 
+  public listarTarefas(): Observable<Tarefa[]> {
+    return this.http.get<Tarefa[]>(this.apiUrl.concat('/todos'));
+  }
+
 }
