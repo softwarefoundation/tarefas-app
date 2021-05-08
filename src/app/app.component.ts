@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { TarefaService} from './service/tarefa.service';
 import {Tarefa} from './model/tarefa';
 
@@ -9,13 +9,13 @@ import {Tarefa} from './model/tarefa';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'tarefas-app';
+  title = 'Tarefas APP';
   tarefas: Tarefa[] = [];
 
   constructor(private tarefaService: TarefaService){}
 
   tarefaForm: FormGroup = new FormGroup({
-    descricao: new FormControl('')
+    descricao: new FormControl('', [Validators.required, Validators.minLength(3)])
   });
 
 
