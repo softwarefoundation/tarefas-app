@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Tarefa } from '../model/tarefa.js';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TarefaService {
 
-  apiUrl = 'http://localhost:8080/tarefa';
+  apiUrl = environment.apiUrl;
 
   constructor( private http: HttpClient ) { }
 
