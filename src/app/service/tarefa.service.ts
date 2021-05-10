@@ -15,23 +15,27 @@ export class TarefaService {
 
   public cadastrarTarefa(tarefa: Tarefa ): Observable<Tarefa> {
     console.log(tarefa);
-    return this.http.post<Tarefa>(this.apiUrl, tarefa);
+    return this.http.post<Tarefa>(this.getApiUrlTarefas(), tarefa);
   }
 
   public listarTarefas(): Observable<Tarefa[]> {
-    return this.http.get<Tarefa[]>(this.apiUrl.concat('/todos'));
+    return this.http.get<Tarefa[]>(`${this.getApiUrlTarefas()}todos`);
   }
 
   public deletarTarefa(tarefa: Tarefa): Observable<void> {
-    const url = `${this.apiUrl + '/' + tarefa.id}`;
+    const url = `${this.getApiUrlTarefas() + tarefa.id}`;
     console.log('Deletar tarefa: ' + url);
     return this.http.delete<void>(url);
   }
 
   public concluirTarefa(tarefa: Tarefa): Observable<Tarefa> {
-    const url = `${this.apiUrl + '/' + tarefa.id}`;
+    const url = `${this.getApiUrlTarefas() + tarefa.id}`;
     console.log('Concluir tarefa: ' + url);
     return this.http.patch<Tarefa>(url, {});
+  }
+
+  private getApiUrlTarefas(): string {
+    return `${this.apiUrl}/tarefa/`;
   }
 
 }
